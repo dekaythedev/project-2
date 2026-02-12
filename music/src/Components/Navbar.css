@@ -1,0 +1,212 @@
+:root{
+  --bg: #0b0f14;
+  --panel: rgba(18, 24, 33, 0.78);
+  --panel2: rgba(18, 24, 33, 0.92);
+  --text: #e7edf5;
+  --muted: #a7b1bf;
+  --border: rgba(255,255,255,0.08);
+  --shadow: 0 14px 40px rgba(0,0,0,0.35);
+  --accent: #1db954;
+  --accent2: #18a64b;
+}
+
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: linear-gradient(180deg, var(--panel2), var(--panel));
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(12px);
+}
+
+.topbar__inner{
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 680px) 1fr;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Brand */
+.topbar__brand{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.topbar__badge{
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(29,185,84,0.35), transparent 60%),
+    linear-gradient(145deg, rgba(15,20,28,1), rgba(18,24,33,1));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  font-size: 18px;
+}
+
+.topbar__brandText{ min-width: 0; }
+.topbar__title{
+  color: var(--text);
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  line-height: 1.1;
+}
+.topbar__subtitle{
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Search */
+.topbar__search{
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.05);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.25);
+}
+
+.topbar__search:focus-within{
+  border-color: rgba(29,185,84,0.55);
+  box-shadow: 0 12px 30px rgba(29,185,84,0.10);
+}
+
+.topbar__searchIcon{
+  color: var(--muted);
+  font-size: 32px;
+  padding-left: 6px;
+  padding-right: 6px
+}
+
+.topbar__searchInput{
+  width: 100%;
+  border: 0;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 16px;
+  padding: 6px 2px;
+}
+
+.topbar__searchInput::placeholder{
+  color: rgba(167,177,191,0.85);
+}
+
+.topbar__clear{
+  border: 0;
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.topbar__go{
+  border: 0;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  color: #07120a;
+  box-shadow: 0 10px 22px rgba(29,185,84,0.18);
+}
+
+/* Actions */
+.topbar__actions{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.topbar__user{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.04);
+}
+
+.topbar__avatar{
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  color: #07120a;
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+}
+
+.topbar__userText{ line-height: 1.1; }
+.topbar__userName{
+  color: var(--text);
+  font-weight: 800;
+  font-size: 13px;
+}
+.topbar__userMeta{
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+/* Buttons (reusable) */
+.btn{
+  border: 0;
+  cursor: pointer;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+}
+
+.btn--primary{
+  background: linear-gradient(180deg, var(--accent), var(--accent2));
+  color: #07120a;
+  box-shadow: 0 10px 22px rgba(29,185,84,0.18);
+}
+
+.btn--ghost{
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+/* Responsive */
+@media (max-width: 920px){
+  .topbar__inner{
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .topbar__actions{
+    justify-content: space-between;
+  }
+  .topbar__subtitle{ display: none; }
+}
+
+@media (max-width: 520px){
+  .topbar__userText{ display: none; }
+  .topbar__go{ padding: 10px 12px; }
+}
